@@ -11,36 +11,37 @@ section:
 
 # Your accomplishments
 accomplishments:
-- name: Linux Foundation System Administrator
-  timeline: "March 2018 - March 2019"
+- name: Apple Certified Macintosh Technician
+  # timeline: "March 2018 - March 2019"
   organization:
-    name: Linux Foundation
-    url: https://www.linuxfoundation.org
-  courseOverview: This course helps to understand the key concepts such as networking, storage, security, maintenance, logging and monitoring, application lifecycle, troubleshooting, API object primitives etc. It also help to grow the ability to establish basic use-cases for end users.
-  certificateURL: "https://example.com"
+    name: Apple, Inc
+    url: https://www.apple.com
+  courseOverview: "Teaches students portable and hardware specifications, troubleshooting techniques,
+    technician safety, take-apart procedures, and service-specific guidelines and resources. This certification is for the repair and diagnostics of all Macintosh desktops, portables, and servers. This certification is required to perform warranted hardware repairs for an Apple Authorized Service Provider."
+  # certificateURL: "https://example.com"
 
-- name: Machine Learning
-  timeline: "Jun 2020 - Jan 2021"
+- name: Apple Certified Support Professional
+  # timeline: "Jun 2020 - Jan 2021"
   organization:
-    name: Coursera
-    url: https://www.coursera.org
-  courseOverview: "This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics include: (i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks). (ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning). (iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI)."
-  certificateURL: "https://example.com"
+    name: Apple, Inc
+    url: https://www.apple.com
+  courseOverview: "The Apple Certified Support Professional certification recognizes the knowledge needed to support and troubleshoot Apple devices in a large organization as a level 1 or 2 help desk professional."
+  # certificateURL: "https://example.com"
 
-- name: Grokking the System Design Interview
-  timeline: "Jan 2018 - Sept 2018"
+- name: CompTIA IT Fundamentals+
+  # timeline: "Jan 2018 - Sept 2018"
   organization:
-    name: educative
-    url: https://www.educative.io
-  courseOverview: This course is a complete guide to master the SDIs. It is created by hiring managers who’ve been working at Google, Facebook, Microsoft, and Amazon. We've carefully chosen a set of questions that have not only been repeatedly asked at top companies, but also provide a thorough experience to handle any system design problem.
-  certificateURL: "https://example.com"
+    name: CompTIA
+    url: https://www.comptia.org
+  courseOverview: "The CompTIA IT Fundamentals (ITF+) exam focuses on the knowledge and skills required to identify and explain the basics of computing, IT infrastructure, software development and database use."
+  # certificateURL: "https://example.com"
 
-- name: Mastering Multithreading Programming with Go (Golang)
-  timeline: "Nov 2017 - Mar 2018"
+- name: Linux Essentials Certification
+  # timeline: "Nov 2017 - Mar 2018"
   organization:
-    name: Udemy
-    url: https://www.udemy.com
-  courseOverview: Discover how to create responsive and high performance software. Develop programs with Golang that are highly Concurrent and Parallel. Improve your programming skills in Go with more advanced, multithreading topics.
-  certificateURL: "https://example.com"
+    name: Linux Professional Institute
+    url: https://www.lpi.org
+  courseOverview: "The Linux Essentials certificate validates a demonstrated understanding of the following: FOSS, the various communities, and licenses. Knowledge of open source applications in the workplace as they relate to closed source equivalents. Basic concepts of hardware, processes, programs and the components of the Linux Operating System. How to work on the command line and with files. How to create and restore compressed backups and archives. System security, users/groups and file permissions for public and private directories. How to create and run simple scripts."
+  # certificateURL: "https://example.com"
  
 

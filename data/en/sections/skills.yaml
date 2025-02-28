@@ -13,59 +13,74 @@ section:
 buttons:
 - name: All
   filter: "all"
-- name: Basic
-  filter: "basic"
-- name: Language
-  filter: "language"
-- name: Container
-  filter: "container"
-- name: Others
-  filter: "others"
+- name: Soft Skills
+  filter: "soft"
+- name: Programming
+  filter: "program"
+- name: Administration
+  filter: "admin"
+- name: Other
+  filter: "other"
 
 # Your Skills.
 # Give a summary of you each skill in the summary section.
 skills:
-- name: Kubernetes
-  logo: /images/sections/skills/kubernetes.png
-  summary: "Capable of deploying, managing application on Kubernetes. Experienced in writing Kubernetes controllers for CRDs."
-  categories: ["container"]
-  url: "https://kubernetes.io/"
-
-- name: Go Development
-  logo: /images/sections/skills/go.png
-  summary: "Using as the main language for professional development. Capable of writing scalable, testable, and maintainable program."
-  categories: ["basic", "language"]
-  url: "https://golang.org/"
-
+- name: Automation
+  logo: /images/sections/skills/automation.png
+  summary: "Experienced with numerous automation tools and processes, including CI/CD, Infrastructure as Code, Ansible, and Jenkins."
+  categories: ["admin", "program"]
+  
 - name: Cloud Computing
-  logo: /images/sections/skills/cloud.png
-  summary: "Worked with most of the major clouds such as GCP, AWS, Azure etc."
-  categories: ["others"]
+  logo: /images/sections/skills/cloudcomputing.png
+  summary: "Well-versed in most cloud and virtualized computing technologies, including Azure, SaaS, PaaS, IaaS, AWS (S3 and ECS), and self-hosted solutions."
+  categories: ["admin", "program"]
 
-- name: Docker
-  logo: /images/sections/skills/docker.svg
-  summary: "Write most of the programs as dockerized container. Experienced with multi-stage, multi-arch build process."
-  categories: ["container"]
-  url: "https://www.docker.com/"
-
-- name: Prometheus
-  logo: /images/sections/skills/prometheus.png
-  summary: "Capable of setup, configure Prometheus metrics. Experienced with PromQL, AlertManager. Also, experienced with writing metric exporters."
-  categories: ["basic"]
-  url: "https://prometheus.io/"
-
-- name: Linux
-  logo: /images/sections/skills/linux.png
-  summary: "Using as the main operating system. Capable of writing bash/shell scripts."
-  categories: ["others"]
-
-- name: Git
-  logo: /images/sections/skills/git.png
-  summary: "Experienced with git-based development. Mostly, use Github. Also, have experience in working with GitLab."
-  categories: ["basic"]
-  url: "https://git-scm.com/"
-
-- name: C++
-  logo: /images/sections/skills/c++.png
-  summary: "Know basic C/C++ programming. Used for contest programming and problem solving."
-  categories: ["basic", "language"]
+- name: Collaboration
+  logo: /images/sections/skills/collaboration.png
+  summary: "Excels working alongside others as a peer, mentor, and leader. Excellent communicator and empathetic partner."
+  categories: ["soft"]
+  
+- name: Containerization
+  logo: /images/sections/skills/docker.webp
+  summary: "Familiar a number of containerization tools, including Docker, Kubernetes, and AWS ECS."
+  categories: ["admin", "program"]
+  
+- name: Detail-Oriented
+  logo: /images/sections/skills/detailoriented.png
+  summary: "Thorough and persistent in all aspects of work. Excellent at documenting processes and maintaining organization. Peristent in performing root cause analysis."
+  categories: ["soft", "other"]
+  
+- name: Methodology
+  logo: /images/sections/skills/methodology.png
+  summary: "Familiar with many IT and development frameworks and methodologies, including Agile, Scrum, Kanban, ITIL, and DevOps."
+  categories: ["soft", "other"]
+  
+- name: Network Administration
+  logo: /images/sections/skills/networkadministration.jpg
+  summary: "Skilled in CDN, HTTP/S, DHCP, firewalls, DNS, VLANs."
+  categories: ["admin"]
+  
+- name: Scripting
+  logo: /images/sections/skills/scripting.png
+  summary: "Comfortable writing and executing scripts in a variety of languages, including bash, batch, Powershell, Python, and JavaScript."
+  categories: ["admin", "program"]
+  
+- name: Site Reliability
+  logo: /images/sections/skills/sitereliability.png
+  summary: "Creatively implements solution to complex problems, applying a wide array of skills and processes to ensure highly reliable systems, environments, and applications. Incident monitoring and analysis via Splunk, Grafana, and Dynatrace. Debugging, load balancing, DevOps, testing."
+  categories: ["admin", "program"]
+  
+- name: Systems Administration
+  logo: /images/sections/skills/systemsadministration.png
+  summary: "Advanced knowledge of configuring, deploying, and maintaining servers and workstations running Windows, Linux, and macOS through both graphical and command line interfaces. Expertise in managing device compliance and security via Jamf Pro, Intune, Active Directory, LDAP, group policy management, and Microsoft Endpoint Configuration Manager. Experience with mobile device management via configuration and deployment of MDM profiles."
+  categories: ["admin"]
+  
+- name: Time Management
+  logo: /images/sections/skills/timemanagement.png
+  summary: "Excels as a self-starter, working well in remote and asynchronous or flexible arrangements. Experienced in on-call rotation responsibilities. Skilled in capacity planning and task delegation."
+  categories: ["soft", "other"]
+  
+- name: Versatility
+  logo: /images/sections/skills/versatility.png
+  summary: "Adaptable and flexible, with a broad skillset and a love for learning. Able to fill many roles and perform at a high level, from support to operations to engineering to people leadership."
+  categories: ["soft"]

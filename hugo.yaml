@@ -1,7 +1,7 @@
 baseURL: https://ryangking.com/
 
-languageCode: bn
-title: "John's Blog"
+languageCode: en
+title: "Ryan's Portfolio"
 
 # Use Hugo modules to add theme
 module:
@@ -23,7 +23,7 @@ languages:
   en:
     languageCode: en
     languageName: English
-    title: "John's Blog"
+    title: "Ryan's Portfolio"
     weight: 1
   bn:
     languageCode: bn
@@ -58,15 +58,15 @@ enableEmoji: true
 # Site parameters
 params:
   # Background image of the landing page
-  background: /images/site/background.jpg
+  background: /images/site/background.png
   # Background image of the landing page for dark theme
   #darkBackground: /images/site/background.jpg
 
   # Provide logos for your site. The inverted logo will be used in the initial
   # transparent navbar and the main logo will be used in the non-transparent navbar.
   logo:
-    main: /images/site/main-logo.png
-    inverted: /images/site/inverted-logo.png
+    main: /images/site/logo.png
+    inverted: /images/site/logo.png
     favicon: /images/site/favicon.png
 
   # GitHub repo of your site
@@ -76,7 +76,7 @@ params:
 
   # Configure the number of section title visible in the top navbar
   topNavbar:
-    maxVisibleSections: 5
+    maxVisibleSections: 7
 
   # Configure various features of this theme
   features:
@@ -100,7 +100,7 @@ params:
 
     # Enable and configure blog posts
     blog:
-      enable: true
+      enable: false
       showAuthor: true # shows the author of post (defaults true)
       # Share post on different social media
       shareButtons:
@@ -117,7 +117,7 @@ params:
 
     # Enable & configure "Notes" features
     notes:
-      enable: true
+      enable: false
 
     # Enable comment feature. There, should be only one of them.
     comment:
@@ -197,7 +197,7 @@ params:
 
     # Specify whether to show flag in the language selector. Default is true.
     flags:
-      enable: true
+      enable: false
       # # If you want to use different country flag for a language, specify them here.
       # flagOverwrites:
       #   - languageCode: en
@@ -295,7 +295,7 @@ params:
       enable: true
     # Show/hide credentials section in the footer. Default is "true".
     credentials:
-      enable: true
+      enable: false
 
     # Show/hide newsletter section in the footer. Default is "true".
     # Currently, it supports "mailchimp".

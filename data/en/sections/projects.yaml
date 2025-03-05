@@ -19,46 +19,41 @@ buttons:
 
 # your projects
 projects:
-- name: Critical Vulnerability Patching
+- name: Legacy Application Disaster Recovery Exercise
+  image: /images/sections/projects/disasterrecoveryexercise.png
   # logo: /images/sections/projects/kubernetes.png
-  role: Lead Engineer
-  timeline: "2023"
+  role: Project Lead
+  timeline: "2024"
   # repo: https://github.com/kubernetes/kubernetes # If your project is a public repo on GitHub, then provide this link. it will show star count.
-  url: "https://www.oracle.com/java/weblogic/"  # If your project is not a public repo but it has a website or any external details url then provide it here. don't provide "repo" and "url" simultaneously.
-  summary: Oversee the configuration and application of critical vulnerability patches to Oracle WebLogic Server.
+  url: "https://www.tungstenautomation.com/"  # If your project is not a public repo but it has a website or any external details url then provide it here. don't provide "repo" and "url" simultaneously.
+  summary: Modernized recovery processes for a mission-critical legacy faxing system (Kofax) with no internal SME or vendor support.
   tags: ["professional"]
 
-- name: Access Control System Integration
+- name: Self-Hosted Real-Time Gaming Platform
+  image: /images/sections/projects/foundryvtt.jpg
   # logo: /images/sections/projects/tensorflow.png
-  role: Project Owner
-  timeline: "2022"
-  # repo: https://github.com/tensorflow/tensorflow
-  url: "https://www.purpleguys.com"
-  summary: Spec'ing, procurement, and deployment of on-premises access control system consisting of workstation hardware, OS, and security software configuration.
-  tags: ["professional"]
-
-- name: Geology Lab Redesign
-  role: Project Owner
-  timeline: "2020"
-  url: "https://www.ku.edu"
-  summary: Establish client-vendor relationship, consult on new lab requirements, purchase and procure lab hardware and software licenses, configure, install, and deploy equipment.
-  tags: ["professional"]
-
-- name: Media Server
-  image: /images/sections/projects/jellyfin.png
-  role: Owner
+  role: Developer & Maintainer
   timeline: "Ongoing"
-  # repo: https://github.com/kelseyhightower/nocode
-  url: "https://jellyfin.org"
-  summary: A home media server deployed to a low-energy box running TrueNAS SCALE, accessible via custom domain routed through Cloudflare Tunnels. The server's frontend employs a combination of Jellyfin, Audiobookshelf, and Calibre Web Server. New media is automatically added courtesy of a collection of applications configured to procure specific public domain content. Specific content not already acquired through filtering can be requested via a custom Discord bot connected to the server via webhooks. The server runs on an isolated VLAN and has most applications deployed as self-hosted solutions as custom Docker containers.
+  # repo: https://github.com/tensorflow/tensorflow
+  url: "https://www.foundrryvtt.com"
+  summary: Self-hosted, low-latency virtual tabletop (VTT) platform for 10+ concurrent users with custom WebRTC integration.
   tags: ["personal"]
 
-- name: FoundryVTT
+- name: Cross-Platform Automation & Monitoring Bot 
+  image: /images/sections/projects/discordbot.png
+  role: Developer & Administrator
+  timeline: "Ongoing"
+  # repo: https://github.com/kelseyhightower/nocode
+  url: "https://discord.com/"
+  summary: Self-hosted Discord bot serving 100+ users across 5+ servers with custom CI/CD-like automation pipelines, acting as a microcosm of distributed systems engineering.
+  tags: ["personal"]
+
+- name: Responsive Portfolio Static Site Infrastructure
   # logo: /images/sections/projects/toha.png
-  image: /images/sections/projects/foundryvtt.jpg
-  role: Owner
+  image: /images/sections/projects/portfoliosite.png
+  role: Web Developer & DevOps Engineer
   timeline: "Ongoing"
   # repo: https://github.com/hossainemruz/toha
-  url: "https://foundryvtt.com"
-  summary: A self-hosted virtual tabletop for tabletop roleplaying games. Hosted on a home server and customized with packages reliant upon HTML, CSS, JavaScript, and JSON. This specific deployment includes a custom audio-video solution adapted from LiveKit, an integrated scheduling system, and is accessible remotely by way of a custom domain routed through Cloudflare Tunnels.
+  url: "https://ryangking.com"
+  summary: Globally deployed, responsive portfolio site showcasing recent work and accomplishments, written in Go and following infrastructure-as-code best practices.
   tags: ["personal"]

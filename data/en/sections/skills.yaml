@@ -42,12 +42,12 @@ skills:
   
 - name: Containerization
   logo: /images/sections/skills/docker.webp
-  summary: "Familiar a number of containerization tools, including Docker, Kubernetes, and AWS ECS."
+  summary: "Familiar with a number of containerization tools, including Docker, Kubernetes, and AWS ECS."
   categories: ["admin", "program"]
   
 - name: Detail-Oriented
   logo: /images/sections/skills/detailoriented.png
-  summary: "Thorough and persistent in all aspects of work. Excellent at documenting processes and maintaining organization. Peristent in performing root cause analysis."
+  summary: "Thorough and persistent in all aspects of work. Excellent at documenting processes and maintaining organization. Persistent in performing root cause analysis."
   categories: ["soft", "other"]
   
 - name: Methodology
@@ -67,7 +67,7 @@ skills:
   
 - name: Site Reliability
   logo: /images/sections/skills/sitereliability.png
-  summary: "Creatively implements solution to complex problems, applying a wide array of skills and processes to ensure highly reliable systems, environments, and applications. Incident monitoring and analysis via Splunk, Grafana, and Dynatrace. Debugging, load balancing, DevOps, testing."
+  summary: "Creatively implements solutions to complex problems, applying a wide array of skills and processes to ensure highly reliable systems, environments, and applications. Incident monitoring and analysis via Splunk, Grafana, and Dynatrace. Debugging, load balancing, DevOps, testing."
   categories: ["admin", "program"]
   
 - name: Systems Administration

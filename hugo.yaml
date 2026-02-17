@@ -17,20 +17,7 @@ module:
   - source: ./node_modules/katex/dist/fonts
     target: static/fonts
 
-# Manage languages
-# For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
-languages:
-  en:
-    languageCode: en
-    languageName: English
-    title: "Ryan's Portfolio"
-    weight: 1
-  bn:
-    languageCode: bn
-    languageName: বাংলা
-    title: জনের ব্লগ
-    weight: 2
-# default language for the content
+# Default language
 defaultContentLanguage: en
 
 
@@ -55,10 +42,13 @@ outputs:
 # Enable global emoji support
 enableEmoji: true
 
+# Disable sitemap generation to avoid permission issues
+disableKinds: ["sitemap"]
+
 # Site parameters
 params:
   # Background image of the landing page
-  background: /images/site/background.png
+  background: /images/site/background.webp
   # Background image of the landing page for dark theme
   #darkBackground: /images/site/background.jpg
 
@@ -306,4 +296,4 @@ params:
 
     # Show/hide disclaimer notice in the footer. Default is "false".
     disclaimer:
-      enable: true
+      enable: false

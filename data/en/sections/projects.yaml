@@ -35,7 +35,7 @@ projects:
   role: Developer & Maintainer
   timeline: "Ongoing"
   # repo: https://github.com/tensorflow/tensorflow
-  url: "https://www.foundrryvtt.com"
+  url: "https://foundryvtt.com/"
   summary: Self-hosted, low-latency virtual tabletop (VTT) platform for 10+ concurrent users with custom WebRTC integration.
   tags: ["personal"]
 

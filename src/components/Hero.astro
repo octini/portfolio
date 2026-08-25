@@ -1,0 +1,132 @@
+---
+import Button from './ui/Button.astro';
+import Sticker from './ui/Sticker.astro';
+import hero from '../assets/photos/hero.webp';
+
+const roles = [
+	'DevOps Engineer',
+	'Site Reliability Engineer',
+	'homelabber',
+	'parent',
+	'professional shower singer',
+];
+---
+
+<section id="top" class="border-b-4 border-ink grid items-center gap-12 pb-10 md:grid-cols-2 md:pb-16">
+	<!-- Photo — first on mobile, right column on md+ (bio swaps to left via order). -->
+	<div class="flex justify-center md:order-2">
+		<div class="relative">
+			<div
+				class="relative w-64 overflow-hidden rounded-3xl border-4 border-ink bg-accent shadow-hard-lg md:w-80"
+			>
+				<span aria-hidden="true" class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-secondary"></span>
+				<span aria-hidden="true" class="absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-primary"></span>
+				<span aria-hidden="true" class="absolute left-6 top-10 h-3 w-3 rounded-full bg-ink-strong"></span>
+				<img src={hero.src} width={hero.width} height={hero.height} alt="Ryan King" class="relative z-10 w-full" />
+			</div>
+			<span
+				aria-hidden="true"
+				class="absolute -right-4 top-12 h-6 w-6 rounded-full border-2 border-ink bg-accent shadow-hard"
+			></span>
+			<span
+				aria-hidden="true"
+				class="absolute -left-3 bottom-10 h-4 w-4 rotate-45 border-2 border-ink bg-primary shadow-hard"
+			></span>
+			<Sticker class="absolute -left-5 -top-5 z-20" color="green" rotate="6">
+				It’s me!
+			</Sticker>
+		</div>
+	</div>
+
+	<div class="flex flex-col items-start gap-6 md:order-1">
+		<div class="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-badge-green px-3 py-1 text-xs font-bold text-ink-strong">
+			<span class="relative flex h-2 w-2">
+				<span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-ink-strong opacity-75 motion-reduce:animate-none"></span>
+				<span class="relative inline-flex h-2 w-2 rounded-full bg-ink-strong"></span>
+			</span>
+			Open to work
+		</div>
+		<p class="font-mono text-xs font-bold uppercase tracking-widest text-muted">DevOps · SRE · Infrastructure</p>
+		<h1 class="inline-block -rotate-1 rounded-2xl border-4 border-ink bg-primary px-5 py-2 text-5xl md:text-[--text-display] leading-tight font-black tracking-tight text-ink-strong shadow-hard">Ryan King</h1>
+		<p class="min-h-[2rem] text-xl font-bold text-ink md:min-h-[2.5rem] md:text-2xl">
+			<span class="mr-2">I'm a</span><span
+				data-typewriter
+				data-roles={JSON.stringify(roles)}
+				aria-hidden="true">{roles[0]}</span
+			><span data-typewriter-cursor class="typewriter-cursor" aria-hidden="true"></span>
+			<span class="sr-only">{roles.join(', ')}</span>
+		</p>
+		<p class="max-w-xl text-lg font-medium leading-relaxed md:text-xl">
+			I design, implement, and maintain the complex information systems that keep enterprise
+			infrastructure alive. And I've never met a big red button that I didn't really want to
+			press.
+		</p>
+		<Button href="#contact" size="lg" variant="secondary">Get in touch</Button>
+	</div>
+</section>
+
+<style>
+	.typewriter-cursor {
+		display: inline-block;
+		width: 0.55em;
+		height: 1em;
+		margin-left: 0.15em;
+		vertical-align: text-bottom;
+		background-color: var(--color-ink);
+		animation: typewriter-blink 1s step-end infinite;
+	}
+
+	@keyframes typewriter-blink {
+		50% {
+			opacity: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.typewriter-cursor {
+			animation: none;
+		}
+	}
+</style>
+
+<script>
+	const el = document.querySelector<HTMLElement>('[data-typewriter]');
+	if (el) {
+		const parsedRoles: string[] = JSON.parse(el.dataset.roles ?? '[]');
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			el.textContent = parsedRoles[0];
+		} else {
+			const TYPE_MS = 80;
+			const ERASE_MS = 40;
+			const HOLD_MS = 1800;
+			let roleIndex = 0;
+			let charIndex = parsedRoles[0].length;
+			let deleting = true;
+
+			function tick() {
+				const role = parsedRoles[roleIndex];
+				if (deleting) {
+					charIndex -= 1;
+					el.textContent = role.slice(0, charIndex);
+					if (charIndex === 0) {
+						deleting = false;
+						roleIndex = (roleIndex + 1) % parsedRoles.length;
+						setTimeout(tick, HOLD_MS);
+						return;
+					}
+				} else {
+					charIndex += 1;
+					el.textContent = role.slice(0, charIndex);
+					if (charIndex === role.length) {
+						deleting = true;
+						setTimeout(tick, HOLD_MS);
+						return;
+					}
+				}
+				setTimeout(tick, deleting ? ERASE_MS : TYPE_MS);
+			}
+
+			setTimeout(tick, HOLD_MS);
+		}
+	}
+</script>

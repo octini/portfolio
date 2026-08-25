@@ -1,0 +1,26 @@
+---
+import Button from './ui/Button.astro';
+import Sticker from './ui/Sticker.astro';
+---
+
+<section id="about" aria-labelledby="about-heading" class="border-b-4 border-ink grid items-center gap-12 pb-10 md:grid-cols-2 md:gap-16 md:pb-16">
+  <div class="flex justify-center md:order-1 md:justify-start" data-reveal>
+    <div class="relative">
+      <div class="absolute -inset-5 rotate-3 rounded-[2.5rem] border-4 border-ink/20 bg-secondary/40" aria-hidden="true"></div>
+      <div class="relative w-64 overflow-hidden rounded-3xl border-4 border-ink bg-primary shadow-hard-lg md:w-80">
+        <span aria-hidden="true" class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-accent"></span>
+        <span aria-hidden="true" class="absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-secondary"></span>
+        <span aria-hidden="true" class="absolute left-7 top-10 h-3 w-3 rounded-full bg-badge-yellow"></span>
+        <span aria-hidden="true" class="absolute right-7 top-24 h-5 w-5 rotate-45 border-2 border-ink bg-badge-green shadow-hard"></span>
+        <span aria-hidden="true" class="absolute bottom-8 left-8 h-4 w-4 rounded-full border-2 border-ink bg-badge-pink shadow-hard"></span>
+        <img src="/photos/headshot.webp" alt="Ryan King" class="relative z-10 w-full" />
+      </div>
+      <Sticker class="absolute -left-5 -top-5 z-20" color="accent" rotate="-6">Me again!</Sticker>
+    </div>
+  </div>
+  <div class="flex flex-col items-start md:order-2" data-reveal style="--reveal-delay: 100ms">
+    <h2 id="about-heading" class="mt-6 inline-block -rotate-1 rounded-2xl border-4 border-ink bg-secondary px-5 py-2 text-4xl font-black tracking-tight text-ink-strong shadow-hard">About me</h2>
+    <p class="mt-6 max-w-xl text-lg font-medium leading-relaxed md:text-xl">I'm an engineer with 15 years of industry experience. My current focus is DevOps and site reliability engineering. I developed my skillset the old-fashioned way: breaking stuff and figuring out how to fix it. I've created disaster recovery plans from scratch, upgraded database schemas across nearly 200 servers with zero downtime, and automated countless hours of work — saving untold blood, sweat, and tears. Mostly the tears. In my spare time, I'm an avid homelabber, keeping on top of emerging technologies. If you want to know more, click that button down there.</p>
+    <Button href="/resume.pdf" variant="outline" size="lg" class="mt-8 bg-primary">Get my resume</Button>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  label?: string;
+  color?: 'accent' | 'secondary' | 'primary' | 'green' | 'ink';
+  rotate?: number;
+  class?: string;
+}
+
+const { label, color = 'accent', rotate = -6, class: className = '' } = Astro.props;
+
+const colors = {
+  accent: 'bg-accent text-ink-strong',
+  secondary: 'bg-secondary text-ink-strong',
+  primary: 'bg-primary text-ink-strong',
+  green: 'bg-badge-green text-ink-strong',
+  ink: 'bg-ink text-paper',
+} as const;
+---
+
+<span
+  class={`press inline-block border-3 border-ink px-3 py-1.5 font-mono text-xs font-bold uppercase tracking-widest shadow-hard ${colors[color]} ${className}`}
+  style={{ transform: `rotate(${rotate}deg)` }}
+>
+  <slot>{label}</slot>
+</span>

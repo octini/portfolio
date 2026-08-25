@@ -1,0 +1,100 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const links = [
+	{ label: 'About', href: '#about' },
+	{ label: 'Experience', href: '#experience' },
+	{ label: 'Skills', href: '#skills' },
+	{ label: 'Projects', href: '#projects' },
+	{ label: 'Contact', href: '#contact' },
+];
+---
+
+<nav class="fixed left-0 right-0 top-6 z-50 mx-auto w-[90%] md:w-fit" aria-label="Primary">
+	<div class="flex items-center gap-6 rounded-3xl border-4 border-ink bg-card px-4 py-3 shadow-hard md:px-6">
+		<ul class="hidden flex-wrap items-center justify-center gap-1 md:flex">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							data-spy-link
+							class="rounded-lg px-2.5 py-1.5 text-sm font-bold text-ink transition-colors hover:bg-accent hover:text-ink-strong"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<ul class="no-scrollbar flex items-center gap-1 overflow-x-auto snap-x md:hidden">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							data-spy-link
+							class="inline-flex min-h-[44px] snap-start whitespace-nowrap items-center rounded-lg px-3 py-1 text-xs font-bold text-ink transition-colors hover:bg-accent hover:text-ink-strong"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+
+		<div class="flex items-center gap-1">
+			<button type="button" class="inline-flex cursor-pointer items-center justify-center rounded-xl p-2 text-ink transition-colors hover:bg-accent hover:text-ink-strong" aria-label="Open search" title="Open search" data-search-trigger>
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<circle cx="11" cy="11" r="8" />
+				<path d="M21 21l-4.35-4.35" />
+			</svg>
+			<kbd aria-hidden="true" class="hidden md:inline-flex items-center rounded-md border-2 border-ink bg-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-ink">⌘K</kbd>
+		</button>
+			<ThemeToggle />
+		</div>
+	</div>
+</nav>
+
+<style>
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+	.no-scrollbar {
+		scrollbar-width: none;
+	}
+	[data-spy-link][data-active] {
+		text-decoration-line: underline;
+		text-decoration-thickness: 4px;
+		text-underline-offset: 4px;
+	}
+</style>
+
+<script>
+	const trigger = document.querySelector('[data-search-trigger]');
+	trigger?.addEventListener('click', () => {
+		window.dispatchEvent(new CustomEvent('open-search'));
+	});
+
+	// Scrollspy: highlight the nav link for the section crossing the viewport band.
+	const spyLinks = document.querySelectorAll('[data-spy-link]');
+	const setActive = (id) => {
+		spyLinks.forEach((link) => {
+			if (link.getAttribute('href') === `#${id}`) link.setAttribute('data-active', '');
+			else link.removeAttribute('data-active');
+		});
+	};
+	const spy = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) setActive(entry.target.id);
+			}
+		},
+		{ rootMargin: '-40% 0px -55% 0px' }
+	);
+	for (const id of ['about', 'experience', 'skills', 'projects', 'contact']) {
+		const section = document.getElementById(id);
+		if (section) spy.observe(section);
+	}
+</script>

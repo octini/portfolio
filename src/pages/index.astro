@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Search from '../components/Search.astro';
+---
+
+<Layout title="Ryan King — DevOps Engineer">
+	<a
+		href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-card focus:text-ink focus:border-4 focus:border-ink focus:rounded-xl focus:px-4 focus:py-2 font-bold"
+	>
+		Skip to content
+	</a>
+
+	<Nav />
+
+	<main id="main" class="relative overflow-hidden">
+		<!-- Page-wide decorative shapes — behind content, clipped by main. -->
+		<div
+			aria-hidden="true"
+			data-drift
+			class="pointer-events-none absolute -right-20 -top-24 -z-10 h-80 w-80 rotate-12 rounded-3xl border-4 border-ink/10 bg-secondary/10 md:-right-24"
+		></div>
+		<div
+			aria-hidden="true"
+			data-drift
+			class="pointer-events-none absolute -left-24 top-[55%] -z-10 h-96 w-96 -rotate-6 rounded-3xl border-4 border-ink/10 bg-accent/10 md:-left-32"
+		></div>
+
+		<div class="relative mx-auto max-w-6xl px-6 pt-28 md:pt-32">
+			<Hero />
+
+			<div class="mt-20 md:mt-24">
+				<AboutSection />
+			</div>
+
+			<div class="mt-20 md:mt-24"><ExperienceSection /></div>
+
+			<div class="mt-20 md:mt-24">
+				<SkillsSection />
+			</div>
+
+			<div class="mt-20 md:mt-24">
+				<ProjectsSection />
+			</div>
+		</div>
+
+	</main>
+
+	<ContactSection />
+
+	<Search />
+
+	<style is:global>
+		html {
+			scroll-behavior: smooth;
+		}
+
+		/* Faint dot grid on the page background — ink tint flips with the palette. */
+		body {
+			background-image: radial-gradient(
+				circle,
+				color-mix(in srgb, var(--color-ink) 10%, transparent) 1px,
+				transparent 1px
+			);
+			background-size: 24px 24px;
+		}
+
+		/* Clear the fixed nav when jumping to a section (Nav sits at top-6, ~5rem tall). */
+		#about,
+		#experience,
+		#skills,
+		#projects,
+		#contact {
+			scroll-margin-top: 7rem;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			html {
+				scroll-behavior: auto;
+			}
+		}
+	</style>
+</Layout>

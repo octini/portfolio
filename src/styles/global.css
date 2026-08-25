@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: `.dark` on <html> (added by the T3 toggle) or any wrapper. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Hybrid palette — light values. Dark values override the SAME tokens below. */
+  --color-ink: #30203a; /* deep plum neutral */
+  --color-paper: #fbf8f5; /* warm page background */
+  --color-card: #fffdfb; /* raised surface */
+  --color-muted: #6b5b70; /* plum-tinted secondary text */
+  --color-ink-strong: #30203a; /* ink that stays dark on bright fills */
+
+  --color-accent: #ff708f; /* pink coral action/personality color */
+  --color-primary: #7894ed; /* periwinkle technical emphasis */
+  --color-secondary: #b18cf0; /* light plum surface/accent */
+
+  --color-badge-yellow: #e4cf85; /* rare butter accent */
+  --color-badge-pink: #ff708f; /* coral */
+  --color-badge-green: #66dfbf; /* bright mint systems/status */
+  --color-badge-blue: #7894ed; /* periwinkle */
+  --color-badge-purple: #b18cf0; /* light plum */
+
+  /* Hard offset shadow color — HSL triplet, flipped in dark so shadows become light. */
+  --color-shadow: 278 31% 17%;
+
+  /* Offset shadows: zero blur, solid color — the neobrutalist core. */
+  --shadow-hard: 4px 4px 0px hsl(var(--color-shadow));
+  --shadow-hard-lg: 8px 8px 0px hsl(var(--color-shadow));
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, monospace;
+
+  /* Display scale for hero/stat numerals. */
+  --text-display: 4rem;
+  --text-display--line-height: 0.95;
+  --text-display--font-weight: 900;
+}
+
+/* Dark palette — composed counterparts, not a mechanical inversion. */
+.dark {
+  --color-ink: #f7eefb;
+  --color-paper: #211a29;
+  --color-card: #2b2235;
+  --color-muted: #c7b9cc;
+  --color-ink-strong: #30203a; /* bright fills keep deep-plum text in both modes */
+
+  --color-accent: #ff8fa3;
+  --color-primary: #9aaeff;
+  --color-secondary: #c5a9f6;
+
+  --color-badge-yellow: #e5d28d;
+  --color-badge-pink: #ff9caf;
+  --color-badge-green: #76e8c8;
+  --color-badge-blue: #9aaeff;
+  --color-badge-purple: #c5a9f6;
+
+  --color-shadow: 278 31% 82%;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-ink-strong);
+  }
+}
+
+/* Scroll-reveal — gated on html.js so no-JS visitors always see content. */
+html.js [data-reveal] {
+	opacity: 0;
+}
+html.js [data-reveal].revealed {
+	animation: reveal-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	animation-delay: var(--reveal-delay, 0ms);
+}
+@keyframes reveal-in {
+	from {
+		opacity: 0;
+		transform: translateY(28px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	html.js [data-reveal] {
+		opacity: 1;
+		animation: none;
+	}
+}
+/* Press-down physics: element presses INTO its hard shadow */
+.press { transition: translate 150ms ease-out, box-shadow 150ms ease-out; }
+@media (prefers-reduced-motion: no-preference) {
+	.press:hover, .press:focus-visible { translate: 4px 4px; box-shadow: none; }
+}
+
+/* Swipe-in underline for text links — animates on hover/focus of the parent anchor. */
+.underline-swipe { position: relative; }
+.underline-swipe::after { content: ""; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 300ms ease-out; }
+a:hover .underline-swipe::after, a:focus-visible .underline-swipe::after { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { .underline-swipe::after { transition: none; } }
+
+/* Gentle vertical drift for decorative shapes — uses the standalone translate property so it composes with Tailwind rotate transforms. */
+html.js [data-drift] {
+	animation: drift 14s ease-in-out infinite alternate;
+}
+@keyframes drift {
+	to {
+		translate: 0 -12px;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	html.js [data-drift] {
+		animation: none;
+	}
+}

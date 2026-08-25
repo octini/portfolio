@@ -1,0 +1,187 @@
+---
+
+import python from '../assets/icons/python.svg?raw';
+import gnubash from '../assets/icons/gnubash.svg?raw';
+import powershell from '../assets/icons/powershell.svg?raw';
+import sqlite from '../assets/icons/sqlite.svg?raw';
+import javascript from '../assets/icons/javascript.svg?raw';
+import typescript from '../assets/icons/typescript.svg?raw';
+import go from '../assets/icons/go.svg?raw';
+import ansible from '../assets/icons/ansible.svg?raw';
+import terraform from '../assets/icons/terraform.svg?raw';
+import docker from '../assets/icons/docker.svg?raw';
+import kubernetes from '../assets/icons/kubernetes.svg?raw';
+import amazonaws from '../assets/icons/amazonaws.svg?raw';
+import microsoftazure from '../assets/icons/microsoftazure.svg?raw';
+import linux from '../assets/icons/linux.svg?raw';
+import apple from '../assets/icons/apple.svg?raw';
+import windows from '../assets/icons/windows.svg?raw';
+import grafana from '../assets/icons/grafana.svg?raw';
+import dynatrace from '../assets/icons/dynatrace.svg?raw';
+import splunk from '../assets/icons/splunk.svg?raw';
+import prometheus from '../assets/icons/prometheus.svg?raw';
+import uptimekuma from '../assets/icons/uptimekuma.svg?raw';
+import git from '../assets/icons/git.svg?raw';
+import jenkins from '../assets/icons/jenkins.svg?raw';
+import jira from '../assets/icons/jira.svg?raw';
+import ollama from '../assets/icons/ollama.svg?raw';
+import modelcontextprotocol from '../assets/icons/modelcontextprotocol.svg?raw';
+import lucideSparkles from '../assets/icons/lucide-sparkles.svg?raw';
+import lucideTerminal from '../assets/icons/lucide-terminal.svg?raw';
+import lucideBot from '../assets/icons/lucide-bot.svg?raw';
+import lucideInfinity from '../assets/icons/lucide-infinity.svg?raw';
+import lucideDatabaseBackup from '../assets/icons/lucide-database-backup.svg?raw';
+import lucideMicroscope from '../assets/icons/lucide-microscope.svg?raw';
+import lucideNetwork from '../assets/icons/lucide-network.svg?raw';
+import lucideGauge from '../assets/icons/lucide-gauge.svg?raw';
+import lucideClipboardCheck from '../assets/icons/lucide-clipboard-check.svg?raw';
+import lucideKanban from '../assets/icons/lucide-kanban.svg?raw';
+import lucideMonitorSmartphone from '../assets/icons/lucide-monitor-smartphone.svg?raw';
+
+interface Skill {
+  label: string;
+  icon: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  color: string;
+  span: string;
+  skills: Skill[];
+}
+
+const categories: Category[] = [
+  {
+    id: 'cat-languages',
+    name: 'Languages & Scripting',
+    color: 'bg-badge-yellow',
+    span: 'lg:col-span-2',
+    skills: [
+      { label: 'Python', icon: python },
+      { label: 'Bash', icon: gnubash },
+      { label: 'PowerShell', icon: powershell },
+      { label: 'SQL', icon: sqlite },
+      { label: 'JavaScript', icon: javascript },
+      { label: 'TypeScript', icon: typescript },
+      { label: 'Go', icon: go },
+    ],
+  },
+  {
+    id: 'cat-infrastructure',
+    name: 'Infrastructure & Cloud',
+    color: 'bg-badge-blue',
+    span: 'lg:col-span-2',
+    skills: [
+      { label: 'Ansible', icon: ansible },
+      { label: 'Terraform', icon: terraform },
+      { label: 'Docker', icon: docker },
+      { label: 'Kubernetes', icon: kubernetes },
+      { label: 'AWS', icon: amazonaws },
+      { label: 'Azure', icon: microsoftazure },
+      { label: 'Linux (RHEL/Debian)', icon: linux },
+      { label: 'macOS', icon: apple },
+      { label: 'Windows Server', icon: windows },
+    ],
+  },
+  {
+    id: 'cat-observability',
+    name: 'Observability & Tooling',
+    color: 'bg-secondary',
+    span: 'lg:col-span-2',
+    skills: [
+      { label: 'Grafana', icon: grafana },
+      { label: 'Dynatrace', icon: dynatrace },
+      { label: 'Splunk', icon: splunk },
+      { label: 'Prometheus', icon: prometheus },
+      { label: 'Uptime Kuma', icon: uptimekuma },
+      { label: 'Git', icon: git },
+      { label: 'Jenkins', icon: jenkins },
+      { label: 'Jira', icon: jira },
+      { label: 'Jamf Pro', icon: lucideMonitorSmartphone },
+    ],
+  },
+  {
+    id: 'cat-ai-automation',
+    name: 'AI & Automation',
+    color: 'bg-badge-pink',
+    span: 'lg:col-span-3',
+    skills: [
+      { label: 'LLM APIs', icon: lucideSparkles },
+      { label: 'Ollama', icon: ollama },
+      { label: 'Model Context Protocol', icon: modelcontextprotocol },
+      { label: 'AI agent orchestration', icon: lucideBot },
+      { label: 'Prompt engineering', icon: lucideTerminal },
+    ],
+  },
+  {
+    id: 'cat-core-competencies',
+    name: 'Core Competencies',
+    color: 'bg-badge-green',
+    span: 'lg:col-span-3',
+    skills: [
+      { label: 'CI/CD', icon: lucideInfinity },
+      { label: 'Disaster Recovery', icon: lucideDatabaseBackup },
+      { label: 'Root-Cause Analysis', icon: lucideMicroscope },
+      { label: 'DNS/DHCP/VLANs', icon: lucideNetwork },
+      { label: 'Capacity Planning', icon: lucideGauge },
+      { label: 'Change Management', icon: lucideClipboardCheck },
+      { label: 'Agile/Scrum', icon: lucideKanban },
+    ],
+  },
+];
+
+// Two icon families share these tiles:
+// - simple-icons ship no width/height/fill — add sizing + fill="currentColor"
+//   so the glyph inherits the tile's ink text color and respects the palette.
+// - Lucide ships stroke="currentColor" fill="none" plus fixed width/height —
+//   strip the fixed size, size via class, leave stroke/fill untouched.
+function inlineIcon(raw: string): string {
+  if (raw.includes('stroke="currentColor"')) {
+    const sized = raw.replace(
+      /<svg([^>]*)>/,
+      (_match, attrs: string) =>
+        `<svg${attrs.replace(/\s+width="[^"]*"/, '').replace(/\s+height="[^"]*"/, '')} aria-hidden="true">`,
+    );
+    return sized.replace('class="lucide', 'class="h-8 w-8 lucide');
+  }
+  return raw.replace(
+    '<svg',
+    '<svg class="h-8 w-8" fill="currentColor" aria-hidden="true"',
+  );
+}
+---
+
+<section id="skills" aria-labelledby="skills-heading" class="border-b-4 border-ink pb-10 md:pb-16">
+   <div class="flex flex-col items-start" data-reveal>
+     <h2 id="skills-heading" class="mt-6 inline-block -rotate-1 rounded-2xl border-4 border-ink bg-badge-pink px-5 py-2 text-4xl font-black tracking-tight text-ink-strong shadow-hard">I’ve got skills</h2>
+  </div>
+
+  <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+    {
+      categories.map((category, index) => (
+        <article
+          id={category.id}
+          data-reveal
+          style={`--reveal-delay: ${index * 60}ms`}
+          class={`rounded-3xl border-4 border-ink p-6 shadow-hard press ${category.color} ${category.span}`}
+        >
+          <h3 class="text-xl font-black text-ink-strong">{category.name}</h3>
+          <ul class="mt-6 flex flex-wrap gap-3">
+            {category.skills.map((skill) => (
+              <li class="flex w-18 flex-col items-center gap-2">
+                <span
+                  class="flex h-12 w-12 items-center justify-center rounded-xl border-2 border-ink bg-paper text-ink"
+                  set:html={inlineIcon(skill.icon)}
+                />
+                <span class="min-h-8 break-words text-center text-xs font-bold leading-4 text-ink-strong">
+                  {skill.label}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>

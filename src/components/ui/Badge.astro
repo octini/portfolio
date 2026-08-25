@@ -1,0 +1,24 @@
+---
+interface Props {
+  label: string;
+  color?: 'yellow' | 'pink' | 'green' | 'blue' | 'purple' | 'ink';
+  class?: string;
+}
+
+const { label, color = 'yellow', class: className = '' } = Astro.props;
+
+const colors = {
+  yellow: 'bg-badge-yellow',
+  pink: 'bg-badge-pink',
+  green: 'bg-badge-green',
+  blue: 'bg-badge-blue',
+  purple: 'bg-badge-purple',
+  ink: 'bg-ink text-paper',
+} as const;
+---
+
+<span
+  class={`inline-flex items-center rounded-full border-2 border-ink px-3 py-1 text-xs font-bold uppercase tracking-wider text-ink-strong shadow-[2px_2px_0px_hsl(var(--color-shadow))] ${colors[color]} ${className}`}
+>
+  {label}
+</span>

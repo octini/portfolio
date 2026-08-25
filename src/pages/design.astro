@@ -1,0 +1,129 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import Badge from '../components/ui/Badge.astro';
+import Sticker from '../components/ui/Sticker.astro';
+import Stat from '../components/ui/Stat.astro';
+import Dot from '../components/ui/Dot.astro';
+---
+
+<Layout title="Design System — ryangkingdotcom">
+	<main class="mx-auto max-w-5xl px-6 py-16">
+		<header>
+			<Sticker class="mb-6">v0.1</Sticker>
+			<h1 class="text-display tracking-tight">Design System</h1>
+			<p class="mt-4 max-w-xl text-lg font-medium text-muted">
+				Tempered neobrutalism: 3-4px borders, zero-blur offset shadows, high contrast, playful
+				accents. Every primitive below renders in both palettes — scroll to the dark band at the
+				bottom.
+			</p>
+		</header>
+
+		<section class="mt-16">
+			<h2 class="mb-2 text-2xl font-black">Tokens</h2>
+			<p class="mb-8 text-muted">Defined once in <code class="font-mono">@theme</code> in global.css. Dark palette flips the same token names.</p>
+			<div class="flex flex-wrap gap-4">
+				<Dot color="accent" /><Dot color="primary" /><Dot color="secondary" />
+				<Dot color="yellow" /><Dot color="pink" /><Dot color="green" /><Dot color="blue" /><Dot color="purple" /><Dot color="ink" />
+			</div>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="mb-8 text-2xl font-black">Buttons</h2>
+			<div class="flex flex-wrap items-center gap-6">
+				<Button variant="primary">Primary</Button>
+				<Button variant="secondary">Secondary</Button>
+				<Button variant="outline">Outline</Button>
+				<Button variant="primary" size="sm">Small</Button>
+				<Button variant="primary" size="lg">Large</Button>
+				<Button href="/design" variant="secondary">Link button</Button>
+			</div>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="mb-8 text-2xl font-black">Cards</h2>
+			<div class="grid gap-8 md:grid-cols-2">
+				<Card>
+					<h3 slot="title" class="text-xl font-black">Card title</h3>
+					<p slot="description" class="mt-1 text-xs font-bold uppercase tracking-widest text-muted">Section label</p>
+					<p class="mt-4 text-muted">Body copy lives in the default slot. Cards carry a 4px border and an 8px hard shadow that grows on hover.</p>
+				</Card>
+				<Card>
+					<h3 slot="title" class="text-xl font-black">With sticker</h3>
+					<p slot="description" class="mt-1 text-xs font-bold uppercase tracking-widest text-muted">Composition</p>
+					<p class="mt-4 text-muted">Primitives compose — a Sticker sits on top of the card.</p>
+					<Sticker class="mt-6" rotate="4">composed ✓</Sticker>
+				</Card>
+			</div>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="mb-8 text-2xl font-black">Badges</h2>
+			<div class="flex flex-wrap gap-4">
+				<Badge label="yellow" color="yellow" />
+				<Badge label="pink" color="pink" />
+				<Badge label="green" color="green" />
+				<Badge label="blue" color="blue" />
+				<Badge label="purple" color="purple" />
+				<Badge label="ink" color="ink" />
+			</div>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="mb-8 text-2xl font-black">Stats</h2>
+			<div class="flex flex-wrap gap-16">
+				<Stat value="12+" caption="Years shipping" />
+				<Stat value="40+" caption="Projects built" />
+				<Stat value="∞" caption="Coffees consumed" />
+			</div>
+		</section>
+
+		<section class="mt-16">
+			<h2 class="mb-8 text-2xl font-black">Dots</h2>
+			<div class="flex flex-col gap-4">
+				<div class="flex items-center gap-4"><Dot color="primary" /><span class="font-bold">2019 — shipped first product</span></div>
+				<div class="flex items-center gap-4"><Dot color="accent" /><span class="font-bold">2022 — went freelance</span></div>
+				<div class="flex items-center gap-4"><Dot color="secondary" /><span class="font-bold">2026 — redesign</span></div>
+			</div>
+		</section>
+
+		<section class="dark mt-24 rounded-3xl border-4 border-ink bg-paper p-10">
+			<h2 class="text-2xl font-black">Dark palette</h2>
+			<p class="mt-2 max-w-xl text-muted">
+				The <code class="font-mono">.dark</code> class on this wrapper flips every token — same
+				components, no dark: overrides needed in the markup. T3's toggle will put this class on
+				<code class="font-mono">&lt;html&gt;</code>.
+			</p>
+
+			<div class="mt-8 flex flex-wrap items-center gap-6">
+				<Button variant="primary">Primary</Button>
+				<Button variant="secondary">Secondary</Button>
+				<Button variant="outline">Outline</Button>
+			</div>
+
+			<div class="mt-8 grid gap-8 md:grid-cols-2">
+				<Card>
+					<h3 slot="title" class="text-xl font-black">Card title</h3>
+					<p slot="description" class="mt-1 text-xs font-bold uppercase tracking-widest text-muted">Dark surface</p>
+					<p class="mt-4 text-muted">Card surface, ink, muted text, and shadow color all flip via the same tokens.</p>
+				</Card>
+				<div class="flex flex-col gap-6">
+					<div class="flex flex-wrap gap-4">
+						<Badge label="yellow" color="yellow" />
+						<Badge label="pink" color="pink" />
+						<Badge label="green" color="green" />
+						<Badge label="blue" color="blue" />
+						<Badge label="purple" color="purple" />
+						<Badge label="ink" color="ink" />
+					</div>
+					<div class="flex flex-wrap gap-16">
+						<Stat value="12+" caption="Years shipping" />
+						<Stat value="40+" caption="Projects built" />
+					</div>
+					<div class="flex items-center gap-4"><Dot color="primary" /><Dot color="accent" /><Dot color="secondary" /><span class="font-bold">Timeline dots</span></div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

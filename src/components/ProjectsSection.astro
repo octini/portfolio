@@ -1,0 +1,166 @@
+---
+import Card from './ui/Card.astro';
+import Badge from './ui/Badge.astro';
+import Sticker from './ui/Sticker.astro';
+import github from '../assets/icons/github.svg?raw';
+
+// simple-icons ship no width/height/fill — add fill="currentColor" so the
+// glyph inherits the link's text color, mirroring SkillsSection's tiles.
+const githubIcon = github.replace('<svg', '<svg fill="currentColor" aria-hidden="true"');
+
+type ProjectColor = 'yellow' | 'pink' | 'green' | 'blue' | 'purple';
+
+interface StatItem {
+  value: string;
+  caption: string;
+}
+
+interface Project {
+  id: string;
+  title: string;
+  dates: string;
+  blurb: string;
+  skills: string[];
+  stats: StatItem[];
+  color: ProjectColor;
+  href?: string;
+  sticker?: {
+    label: string;
+    color: 'accent' | 'secondary' | 'primary' | 'ink';
+    rotate: number;
+  };
+}
+
+const projects: Project[] = [
+  {
+    id: 'project-document-platform',
+    title: 'Enterprise Document Platform Upgrade',
+    dates: '2025 · Professional',
+    color: 'blue',
+    blurb:
+      'A 19-team enterprise application upgrade, every team running its own UAT, all of them hitting the drop-dead date. Fourteen production servers commissioned, F5 farm rotated across two overnight windows, and a 176-server SQL upgrade delivered with zero downtime. Zero. Downtime.',
+    skills: ['SQL', 'Windows Server', 'RHEL', 'F5', 'Phased Migration'],
+    stats: [
+      { value: '19', caption: 'teams — 9 infrastructure, 10 product, each running its own UAT' },
+      { value: '176', caption: 'servers on the zero-downtime SQL 2016→2019 upgrade' },
+      { value: '14', caption: 'production servers commissioned: 2 SQL, 8 RHEL, 4 Windows' },
+      { value: '0', caption: 'production downtime — concurrent deployment, phased migration' },
+    ],
+    sticker: { label: 'ZERO DOWNTIME', color: 'accent', rotate: -6 },
+  },
+  {
+    id: 'project-dr-exercise',
+    title: 'Legacy Application Disaster Recovery Exercise',
+    dates: '2024 · Professional',
+    color: 'blue',
+    blurb:
+      "A mission-critical legacy document platform with no internal SME, no vendor support, and documentation that had a lot of faith in you. I reverse-engineered the undocumented architecture and built a phased disaster recovery program from nothing.",
+    skills: ['PowerShell', 'SQL', 'Windows Server', 'Disaster Recovery', 'Root-Cause Analysis'],
+    stats: [
+      { value: '8 hours', caption: 'discovery-to-recovery target, down from no plan at all' },
+      { value: '40 hours', caption: 'the full failover exercise, 4 teams and 8 engineers' },
+      { value: '24 hours', caption: 'stress test with production running from the alternate data center' },
+      { value: '12h → 90s', caption: 'manual failover labor compressed into one PowerShell script' },
+    ],
+    sticker: { label: 'FROM NOTHING', color: 'accent', rotate: -6 },
+  },
+  {
+    id: 'project-local-business',
+    title: 'Local Business Technology Overhaul',
+    dates: 'Nov 2025 – Present',
+    color: 'green',
+    blurb:
+      "Migrated a local business to a modern JS + Tailwind static site with full domain transfer, DNS configuration, encrypted email, SEO, analytics, and commissioned branding. The client stays anonymous because they didn't sign up to be a case study.",
+    skills: ['JavaScript', 'Tailwind', 'DNS', 'SEO', 'web analytics'],
+    stats: [
+      { value: '1', caption: 'local business client (identity withheld)' },
+      { value: '1', caption: 'full domain transfer' },
+      { value: '7', caption: 'deliverables: JS + Tailwind rebuild, domain, DNS, encrypted email, SEO, analytics, branding' },
+    ],
+  },
+  {
+    id: 'project-tgo',
+    title: 'TGO — Multi-Agent Orchestration Plugin',
+    dates: 'Open Source · 2026',
+    color: 'yellow',
+    href: 'https://github.com/octini/trans-genderian-orchestra',
+    blurb:
+      'A thin orchestration plugin for OpenCode (an AI coding agent) that turns one model call into a disciplined ensemble of specialists — research-grounded against the MAST taxonomy of multi-agent failures, boolean exit gates on every piece of delegated work, and the judge kept separate from the doer.',
+    skills: ['TypeScript', 'SolidJS', 'AI agents', 'OpenCode plugins'],
+    stats: [
+      { value: 'MAST', caption: 'research-grounded against the multi-agent failure taxonomy' },
+      { value: '100%', caption: 'of delegated work exits through boolean gates' },
+      { value: '1', caption: 'judge, kept strictly separate from the doer' },
+    ],
+  },
+  {
+    id: 'project-homelab',
+    title: 'Homelab',
+    dates: 'May 2025 – Present',
+    color: 'purple',
+    blurb:
+      'TrueNAS SCALE on RAID-Z2 with VLAN isolation, because I like my data like my backups: redundant. The Docker stack runs FoundryVTT with custom LiveKit audio/video for 20+ concurrent players, Jellyfin driven by a Discord bot that turns plaintext requests into search-and-download, and monitoring that politely yells at me in under 60 seconds.',
+    skills: ['TrueNAS', 'Docker', 'VLANs', 'FoundryVTT', 'LiveKit', 'WebRTC', 'Prometheus', 'Uptime Kuma', 'Discord API'],
+    stats: [
+      { value: '20+', caption: 'concurrent VTT users over the custom LiveKit layer' },
+      { value: '<60s', caption: 'Prometheus + Uptime Kuma alerts hitting Discord' },
+      { value: '100+', caption: 'bot users across 5+ Discord servers' },
+      { value: '2', caption: 'drives of fault tolerance on RAID-Z2' },
+    ],
+    sticker: { label: 'SELF-HOSTED', color: 'primary', rotate: 3 },
+  },
+];
+---
+
+<section id="projects" class="border-b-4 border-ink grid gap-12 pb-10 md:pb-14">
+  <div class="flex flex-col items-start" data-reveal>
+    <h2 class="mt-6 inline-block -rotate-1 rounded-2xl border-4 border-ink bg-badge-green px-5 py-2 text-4xl font-black tracking-tight text-ink-strong shadow-hard">Things I’ve built</h2>
+  </div>
+
+  <div class="grid gap-8 md:grid-cols-2">
+    {
+      projects.map((project, index) => (
+        <div
+          id={project.id}
+          data-reveal
+          style={`--reveal-delay: ${(index % 2) * 80}ms`}
+          class:list={['min-w-0', index === projects.length - 1 ? 'md:col-span-2' : '']}
+        >
+        <Card class:list={['relative flex h-full w-full flex-col']}>
+          {
+            project.sticker && (
+              <Sticker
+                label={project.sticker.label}
+                color={project.sticker.color}
+                rotate={project.sticker.rotate}
+                class="absolute -top-5 right-8"
+              />
+            )
+          }
+
+          <div class="flex flex-wrap items-start justify-between gap-3 pr-10">
+            <h3 class="text-2xl font-black leading-tight">{project.title}</h3>
+            <Badge label={project.dates} color={project.color} />
+          </div>
+
+          <p class="mt-4 leading-relaxed text-muted">{project.blurb}</p>
+
+          {project.href && (
+            <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label="View TGO on GitHub" class="mt-3 inline-flex items-center gap-2 text-sm font-bold underline decoration-2 underline-offset-4 text-ink-strong transition-transform hover:-translate-y-0.5"><span class="inline-block h-5 w-5 [&_svg]:h-full [&_svg]:w-full" set:html={githubIcon}></span>GitHub</a>
+          )}
+
+          <div class="mt-6 flex flex-wrap gap-2" aria-label="Skills">
+            {project.skills.map((skill) => <Badge label={skill} color="ink" />)}
+          </div>
+
+          <ul class="mt-4 flex flex-wrap gap-2">
+            {project.stats.map((stat) => (
+              <li class="rounded-2xl border-2 border-ink bg-card px-3 py-1 text-sm font-bold text-ink"><span class="text-ink-strong">{stat.value}</span> {stat.caption}</li>
+            ))}
+          </ul>
+        </Card>
+        </div>
+      ))
+    }
+  </div>
+</section>

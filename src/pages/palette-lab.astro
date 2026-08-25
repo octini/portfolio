@@ -1,0 +1,773 @@
+---
+import Layout from '../layouts/Layout.astro';
+import hero from '../assets/photos/hero.webp';
+
+const roles = ['an SRE', 'a DevOps Engineer', 'a homelabber'];
+
+const timeline = [
+  { title: 'Engineer III', company: 'Edward Jones', date: '2022 - now', tone: 'blue' },
+  { title: 'Senior IT Support Technician', company: 'University of Kansas', date: '2018 - 2022', tone: 'green' },
+  { title: 'Senior AppleCare Advisor', company: 'Apple Inc', date: '2012 - 2017', tone: 'coral' },
+];
+
+const skills = [
+  { name: 'Infrastructure & Cloud', items: ['Ansible', 'Terraform', 'Docker', 'Kubernetes'], tone: 'blue' },
+  { name: 'Observability', items: ['Grafana', 'Splunk', 'Prometheus', 'Dynatrace'], tone: 'coral' },
+  { name: 'Core Competencies', items: ['CI/CD', 'Disaster Recovery', 'Root-Cause Analysis'], tone: 'mint' },
+];
+
+const projects = [
+  { name: 'Disaster Recovery Exercise', stat: '12h -> 90s', label: 'manual failover to script' },
+  { name: 'Self-Hosted Homelab', stat: 'under 60s', label: 'monitoring alert response' },
+  { name: 'Real-Time Gaming Platform', stat: '20+', label: 'concurrent users' },
+];
+
+const paletteStudies = [
+  {
+    className: 'palette-cobalt',
+    number: '01',
+    title: 'Cobalt + coral',
+    description: 'Your preference-led direction: cobalt and periwinkle lead, coral supplies warmth, mint and plum support.',
+    swatches: [
+      { name: 'cobalt', color: '#2f55f3' },
+      { name: 'periwinkle', color: '#5268e8' },
+      { name: 'coral', color: '#ff708f' },
+      { name: 'mint', color: '#6ed7b5' },
+      { name: 'plum', color: '#b18cf0' },
+      { name: 'yellow, sidelined', color: '#d8c878' },
+    ],
+  },
+  {
+    className: 'palette-plum',
+    number: '02',
+    title: 'Plum + mint lab',
+    description: 'The more unexpected direction: deep plum anchors the page, mint drives actions, coral adds a human spark.',
+    swatches: [
+      { name: 'plum', color: '#7442a8' },
+      { name: 'deep plum', color: '#30203a' },
+      { name: 'mint', color: '#66dfbf' },
+      { name: 'coral', color: '#ff7e7c' },
+      { name: 'periwinkle', color: '#7894ed' },
+      { name: 'butter, sidelined', color: '#e4cf85' },
+    ],
+  },
+  {
+    className: 'palette-hybrid',
+    number: '03',
+    title: 'Light plum + bright mint',
+    description: 'The blend: periwinkle carries technical emphasis, pink coral owns action, light plum carries surfaces, and mint marks systems.',
+    swatches: [
+      { name: 'light plum', color: '#b18cf0' },
+      { name: 'bright mint', color: '#66dfbf' },
+      { name: 'pink coral', color: '#ff708f' },
+      { name: 'periwinkle', color: '#7894ed' },
+      { name: 'deep plum ink', color: '#30203a' },
+      { name: 'warm paper', color: '#fbf8f5' },
+    ],
+  },
+];
+---
+
+<Layout title="Palette Lab - Ryan King">
+  <main class="palette-lab">
+    <header class="lab-intro">
+      <a class="lab-back" href="/">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" />
+        </svg>
+        Back to portfolio
+      </a>
+      <p class="lab-kicker">Color study / 01</p>
+      <h1>Same portfolio. Two different personalities.</h1>
+      <p class="lab-lede">
+        These are side-by-side palette studies, not production changes. The layout, content, and visual hierarchy stay
+        the same so the color roles are easy to compare.
+      </p>
+    </header>
+
+    <div class="palette-grid">
+      {
+        paletteStudies.map((palette) => (
+          <article class:list={['palette-panel', palette.className]} aria-label={`${palette.title} palette study`}>
+            <header class="palette-heading">
+              <div>
+                <p class="palette-number">Palette {palette.number}</p>
+                <h2>{palette.title}</h2>
+                <p>{palette.description}</p>
+              </div>
+              <div class="swatches" aria-label={`${palette.title} colors`}>
+                {palette.swatches.map((swatch) => (
+                  <span class="swatch-wrap" title={swatch.name}>
+                    <span class="swatch" style={`--swatch: ${swatch.color}`}></span>
+                    <span class="swatch-label">{swatch.name}</span>
+                  </span>
+                ))}
+              </div>
+            </header>
+
+            <div class="palette-content">
+              <nav class="mock-nav" aria-label={`${palette.title} sample navigation`}>
+                <span class="mock-mark">RK</span>
+                <span class="mock-links">
+                  <span>About</span>
+                  <span>Skills</span>
+                  <span>Projects</span>
+                </span>
+                <span class="mock-actions">
+                  <span class="mock-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" /><path d="m16 16 4 4" /></svg>
+                  </span>
+                  <span class="mock-theme">half</span>
+                </span>
+              </nav>
+
+              <section class="mock-hero">
+                <div class="mock-copy">
+                  <p class="mock-kicker">Hi! I'm Ryan. I'm</p>
+                  <h3>{roles[0]}</h3>
+                  <p class="mock-bio">
+                    I design, implement, and maintain the complex information systems that keep enterprise infrastructure alive.
+                  </p>
+                  <span class="mock-button">Get in touch</span>
+                </div>
+                <div class="mock-photo-wrap">
+                  <div class="mock-photo-frame">
+                    <span class="photo-orb photo-orb-one" aria-hidden="true"></span>
+                    <span class="photo-orb photo-orb-two" aria-hidden="true"></span>
+                    <img src={hero.src} width={hero.width} height={hero.height} alt="Ryan King" />
+                  </div>
+                  <span class="mock-sticker">It's me!</span>
+                </div>
+              </section>
+
+              <div class="mock-rule" aria-hidden="true"></div>
+
+              <section class="mock-section">
+                <div class="section-heading">
+                  <p class="mock-kicker">About / Experience</p>
+                  <h3>Systems that refuse to fall over.</h3>
+                </div>
+                <div class="timeline">
+                  {timeline.map((role) => (
+                    <div class="timeline-item">
+                      <span class:list={['timeline-dot', `tone-${role.tone}`]} aria-hidden="true"></span>
+                      <div>
+                        <p class="timeline-date">{role.date}</p>
+                        <h4>{role.title}</h4>
+                        <p>{role.company}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section class="mock-section">
+                <div class="section-heading">
+                  <p class="mock-kicker">Skills</p>
+                  <h3>The useful stuff.</h3>
+                </div>
+                <div class="skill-grid">
+                  {skills.map((group) => (
+                    <div class:list={['skill-card', `tone-${group.tone}`]}>
+                      <h4>{group.name}</h4>
+                      <div class="skill-list">
+                        {group.items.map((item) => <span>{item}</span>)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section class="mock-section">
+                <div class="section-heading">
+                  <p class="mock-kicker">Projects</p>
+                  <h3>Things I built because I was curious.</h3>
+                </div>
+                <div class="project-grid">
+                  {projects.map((project) => (
+                    <div class="project-card">
+                      <h4>{project.name}</h4>
+                      <strong>{project.stat}</strong>
+                      <p>{project.label}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <footer class="mock-footer">
+                <div>
+                  <p class="mock-kicker">Get in touch</p>
+                  <h3>Have a complicated system?</h3>
+                </div>
+                <span class="mock-button">ryangking@me.com</span>
+              </footer>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+
+  <style is:global>
+    .palette-lab {
+      min-height: 100vh;
+      padding: 2rem clamp(1rem, 3vw, 3rem) 5rem;
+      background: #efe5dd;
+      color: #30203a;
+    }
+
+    .lab-intro {
+      max-width: 72rem;
+      margin: 0 auto 2.5rem;
+    }
+
+    .lab-back,
+    .lab-kicker,
+    .palette-number,
+    .mock-kicker,
+    .timeline-date,
+    .swatch-label,
+    .mock-theme {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .lab-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .lab-back svg,
+    .mock-icon svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 2;
+    }
+
+    .lab-kicker {
+      margin: 2.5rem 0 0.8rem;
+      color: #5f647c;
+    }
+
+    .lab-intro h1 {
+      max-width: 48rem;
+      margin: 0;
+      font-size: clamp(2.25rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .lab-lede {
+      max-width: 42rem;
+      margin: 1.25rem 0 0;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: #5f647c;
+    }
+
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .palette-panel {
+      --color-ink: #171a33;
+      --color-paper: #f6f7ff;
+      --color-card: #ffffff;
+      --color-muted: #59617e;
+      --color-ink-strong: #171a33;
+      --color-accent: #2f55f3;
+      --color-primary: #5268e8;
+      --color-secondary: #ff708f;
+      --color-badge-yellow: #d8c878;
+      --color-badge-pink: #ff9bb1;
+      --color-badge-green: #6ed7b5;
+      --color-badge-blue: #2f55f3;
+      --color-badge-purple: #b18cf0;
+      --color-shadow: 226 42% 17%;
+      overflow: hidden;
+      color: var(--color-ink);
+      background: var(--color-paper);
+      border: 4px solid var(--color-ink);
+      border-radius: 1.5rem;
+      box-shadow: 10px 10px 0 hsl(var(--color-shadow));
+    }
+
+    .palette-plum {
+      --color-ink: #30203a;
+      --color-paper: #fbf8f5;
+      --color-card: #ffffff;
+      --color-muted: #6b5b70;
+      --color-ink-strong: #30203a;
+      --color-accent: #66dfbf;
+      --color-primary: #7442a8;
+      --color-secondary: #ff7e7c;
+      --color-badge-yellow: #e4cf85;
+      --color-badge-pink: #ffaba3;
+      --color-badge-green: #66dfbf;
+      --color-badge-blue: #7894ed;
+      --color-badge-purple: #7442a8;
+      --color-shadow: 278 31% 17%;
+    }
+
+    .palette-hybrid {
+      --color-ink: #30203a;
+      --color-paper: #fbf8f5;
+      --color-card: #fffdfb;
+      --color-muted: #6b5b70;
+      --color-ink-strong: #30203a;
+      --color-accent: #ff708f;
+      --color-primary: #7894ed;
+      --color-secondary: #b18cf0;
+      --color-badge-yellow: #e4cf85;
+      --color-badge-pink: #ff708f;
+      --color-badge-green: #66dfbf;
+      --color-badge-blue: #7894ed;
+      --color-badge-purple: #b18cf0;
+      --color-shadow: 278 31% 17%;
+      --hybrid-coral: #ff708f;
+    }
+
+    .palette-heading {
+      display: grid;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: var(--color-card);
+      border-bottom: 4px solid var(--color-ink);
+    }
+
+    .palette-number,
+    .mock-kicker,
+    .timeline-date {
+      margin: 0;
+      color: var(--color-primary);
+    }
+
+    .palette-heading h2 {
+      margin: 0.35rem 0 0;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .palette-heading p:last-child {
+      max-width: 34rem;
+      margin: 0.75rem 0 0;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .swatch-wrap {
+      display: grid;
+      gap: 0.35rem;
+      min-width: 3.2rem;
+    }
+
+    .swatch {
+      display: block;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: var(--swatch);
+      border: 2px solid var(--color-ink);
+      border-radius: 0.65rem;
+      box-shadow: 2px 2px 0 var(--color-ink);
+    }
+
+    .swatch-label {
+      max-width: 4.8rem;
+      overflow: hidden;
+      color: var(--color-muted);
+      font-size: 0.55rem;
+      line-height: 1.1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .palette-content {
+      padding: 1.25rem;
+      background: var(--color-paper);
+    }
+
+    .mock-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.7rem;
+      padding: 0.65rem 0.8rem;
+      background: var(--color-card);
+      border: 3px solid var(--color-ink);
+      border-radius: 1rem;
+      box-shadow: 4px 4px 0 hsl(var(--color-shadow));
+    }
+
+    .mock-mark {
+      display: grid;
+      width: 2rem;
+      height: 2rem;
+      flex: none;
+      place-items: center;
+      color: var(--color-ink-strong);
+      background: var(--color-secondary);
+      border: 2px solid var(--color-ink);
+      border-radius: 0.55rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .mock-links,
+    .mock-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .mock-links {
+      flex: 1;
+      justify-content: center;
+      color: var(--color-ink);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.58rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .mock-links span,
+    .mock-theme,
+    .mock-icon {
+      padding: 0.35rem 0.4rem;
+      border-radius: 0.4rem;
+    }
+
+    .mock-links span:first-child,
+    .mock-theme {
+      background: var(--color-accent);
+      color: var(--color-ink-strong);
+    }
+
+    .mock-icon {
+      display: grid;
+      place-items: center;
+      color: var(--color-ink);
+      border: 2px solid var(--color-ink);
+    }
+
+    .mock-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.8fr);
+      gap: 1rem;
+      align-items: center;
+      min-height: 22rem;
+      padding: 3.5rem 0 2.5rem;
+    }
+
+    .mock-copy h3,
+    .section-heading h3,
+    .mock-footer h3 {
+      margin: 0.45rem 0 0;
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+    }
+
+    .mock-copy h3 {
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+
+    .mock-bio {
+      margin: 1rem 0 1.25rem;
+      color: var(--color-muted);
+      font-size: 0.85rem;
+      line-height: 1.55;
+    }
+
+    .mock-button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.7rem;
+      padding: 0.65rem 0.85rem;
+      color: var(--color-ink-strong);
+      background: var(--color-accent);
+      border: 3px solid var(--color-ink);
+      border-radius: 0.75rem;
+      box-shadow: 4px 4px 0 hsl(var(--color-shadow));
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .mock-photo-wrap {
+      position: relative;
+      justify-self: end;
+      width: min(100%, 13rem);
+    }
+
+    .mock-photo-frame {
+      position: relative;
+      overflow: hidden;
+      background: var(--color-secondary);
+      border: 4px solid var(--color-ink);
+      border-radius: 1.5rem;
+      box-shadow: 8px 8px 0 hsl(var(--color-shadow));
+    }
+
+    .mock-photo-frame::after {
+      position: absolute;
+      right: -2.5rem;
+      bottom: -3rem;
+      width: 9rem;
+      height: 9rem;
+      content: '';
+      background: var(--color-primary);
+      border-radius: 999px;
+      opacity: 0.8;
+    }
+
+    .mock-photo-frame img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .photo-orb {
+      position: absolute;
+      z-index: 2;
+      width: 0.7rem;
+      height: 0.7rem;
+      background: var(--color-accent);
+      border: 2px solid var(--color-ink);
+      border-radius: 999px;
+    }
+
+    .photo-orb-one {
+      top: 0.8rem;
+      left: 0.8rem;
+    }
+
+    .photo-orb-two {
+      right: 0.75rem;
+      bottom: 1rem;
+      background: var(--color-primary);
+    }
+
+    .mock-sticker {
+      position: absolute;
+      z-index: 3;
+      top: -0.8rem;
+      left: -0.8rem;
+      padding: 0.45rem 0.55rem;
+      color: var(--color-ink-strong);
+      background: var(--color-secondary);
+      border: 3px solid var(--color-ink);
+      box-shadow: 4px 4px 0 hsl(var(--color-shadow));
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.55rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      transform: rotate(-6deg);
+    }
+
+    .mock-rule {
+      margin: 0 0 2.5rem;
+      border-top: 3px dashed color-mix(in srgb, var(--color-ink) 25%, transparent);
+    }
+
+    .mock-section {
+      margin-top: 2.5rem;
+    }
+
+    .section-heading h3 {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.55rem 1fr;
+      gap: 0.65rem;
+      align-items: start;
+      padding: 0.65rem;
+      background: var(--color-card);
+      border: 3px solid var(--color-ink);
+      border-radius: 0.7rem;
+      box-shadow: 3px 3px 0 hsl(var(--color-shadow));
+    }
+
+    .timeline-dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.25rem;
+      background: var(--color-primary);
+      border: 2px solid var(--color-ink);
+      border-radius: 999px;
+    }
+
+    .timeline-dot.tone-green,
+    .skill-card.tone-mint {
+      background: var(--color-badge-green);
+    }
+
+    .timeline-dot.tone-coral {
+      background: var(--color-secondary);
+    }
+
+    .timeline-item h4,
+    .skill-card h4,
+    .project-card h4 {
+      margin: 0.15rem 0 0;
+      font-size: 0.86rem;
+      line-height: 1.1;
+    }
+
+    .timeline-item p:last-child {
+      margin: 0.3rem 0 0;
+      color: var(--color-muted);
+      font-size: 0.72rem;
+    }
+
+    .skill-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+
+    .skill-card,
+    .project-card {
+      padding: 0.75rem;
+      background: var(--color-badge-blue);
+      border: 3px solid var(--color-ink);
+      border-radius: 0.8rem;
+      box-shadow: 3px 3px 0 hsl(var(--color-shadow));
+    }
+
+    .skill-card.tone-coral {
+      background: var(--color-secondary);
+    }
+
+    .palette-hybrid .skill-card.tone-coral,
+    .palette-hybrid .timeline-dot.tone-coral {
+      background: var(--hybrid-coral);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.65rem;
+    }
+
+    .skill-list span {
+      padding: 0.25rem 0.35rem;
+      background: var(--color-paper);
+      border: 2px solid var(--color-ink);
+      border-radius: 0.35rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.55rem;
+      font-weight: 800;
+    }
+
+    .project-card {
+      background: var(--color-card);
+    }
+
+    .project-card strong {
+      display: block;
+      margin-top: 1rem;
+      color: var(--color-primary);
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .project-card p {
+      margin: 0.35rem 0 0;
+      color: var(--color-muted);
+      font-size: 0.65rem;
+      line-height: 1.3;
+    }
+
+    .mock-footer {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 2.5rem -1.25rem -1.25rem;
+      padding: 1.25rem;
+      background: var(--color-card);
+      border-top: 4px solid var(--color-ink);
+    }
+
+    .mock-footer h3 {
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+    }
+
+    @media (max-width: 1100px) {
+      .palette-grid {
+        grid-template-columns: 1fr;
+        max-width: 720px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .palette-lab {
+        padding-inline: 0.75rem;
+      }
+
+      .palette-content,
+      .palette-heading {
+        padding-inline: 0.9rem;
+      }
+
+      .mock-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-photo-wrap {
+        order: -1;
+        justify-self: center;
+        width: min(14rem, 70%);
+      }
+
+      .skill-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mock-footer {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</Layout>
